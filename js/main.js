@@ -35,8 +35,8 @@ var notFound;
 function CariSiswa(nama, kelas) {
     notFound = true;
     document.getElementById("result").innerHTML = "";
-    var jenisKelamin : CekJenisKelamin();
-    var nomorkelas = cekKelas(kelas);
+    var jenisKelamin = CekJenisKelamin();
+    var nomorKelas = cekKelas(kelas);
 
     /*
     
@@ -47,13 +47,15 @@ function CariSiswa(nama, kelas) {
     */
 
     while(notFound) {
-        for(var index = 0; index < dataSiswa.length; i++) {
-            if(dataSiswa[i].nama.indexOf(nama) !== -1 && datasiswa[index].kelas == nomorKelas)
-                document.GetElementById("result").innerHTML += "Nama : " + dataSiswa[index].nama + "<br>";
-                document.GetElementById("result").innerHTML += "Kelas : RPL " + dataSiswa[index].kelas + "<br>";
-                document.GetElementById("result").innerHTML += "Jenis Kelamin : " + dataSiswa[index].jenisKelamin + "<br>";
+        for(var index = 0; index < dataSiswa.length; index++) {
+            if(dataSiswa[index].nama.indexOf(nama) !== -1 && dataSiswa[index].kelas == nomorKelas) {
+                console.log(dataSiswa[index].nama); 
+                document.getElementById("result").innerHTML += "Nama : " + dataSiswa[index].nama + "<br>";
+                document.getElementById("result").innerHTML += "Kelas : RPL " + dataSiswa[index].kelas + "<br>";
+                document.getElementById("result").innerHTML += "Jenis Kelamin : " + dataSiswa[index].jenisKelamin + "<br>";
                 notFound = false;
                 break;
+            }
             
         }
 
@@ -67,9 +69,9 @@ function CariSiswa(nama, kelas) {
 function CekJenisKelamin() {
     //contoh perbaikan kode
     // var jeniselamin = document.getelementsByName("jenisKelamin"); ==> nama variabel di baris ini salah, yang benar mestinya jenisKelamin
-    var jenisKelamin = document.getelementsByName("jenisKelamin"); // ==> baris yang sudah diperbaiki
+    var jenisKelamin = document.getElementsByName("jenisKelamin"); // ==> baris yang sudah diperbaiki
     
-    for(var i = 0; j < jenisKelamin.length; i++) {
+    for(var i = 0; i < jenisKelamin.length; i++) {
         if(jenisKelamin[i].checked) {
             return jenisKelamin[0].value;
         }
@@ -79,10 +81,10 @@ function CekJenisKelamin() {
 function cekKelas(kelas) {
     switch (kelas) {
         case "RPL1":
-            return 2;
+            return 1;
         
         case "RPL2":
-            return 1;
+            return 2;
     }
 }
 
